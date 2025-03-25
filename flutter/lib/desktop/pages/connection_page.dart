@@ -78,36 +78,20 @@ class _OnlineStatusWidgetState extends State<OnlineStatusWidget> {
               .marginOnly(left: em),
         );
 
-    setupServerWidget() => Flexible(
-          child: Offstage(
-            offstage: !(!_svcStopped.value &&
-                stateGlobal.svcStatus.value == SvcStatus.ready &&
-                _svcIsUsingPublicServer.value),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(', ', style: TextStyle(fontSize: em)),
-                Flexible(
-                  child: InkWell(
-                    onTap: onUsePublicServerGuide,
-                    child: Row(
-                      children: [
-                        Flexible(
-                          child: Text(
-                            translate('setup_server_tip'),
-                            style: TextStyle(
-                                decoration: TextDecoration.underline,
-                                fontSize: em),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-        );
+    Widget setupServerWidget() => Flexible(
+      child: Offstage(
+        // 保留原有条件或直接设为 true 强制隐藏（根据需求）
+        offstage: !(!_svcStopped.value &&
+            stateGlobal.svcStatus.value == SvcStatus.ready &&
+            _svcIsUsingPublicServer.value),
+        // 清空子组件列表
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [], // 移除了 Text(', ') 和 InkWell
+        ),
+      ),
+    );
+
 
     basicWidget() => Row(
           crossAxisAlignment: CrossAxisAlignment.center,
