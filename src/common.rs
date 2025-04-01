@@ -940,7 +940,7 @@ fn get_api_server_(api: String, custom: String) -> String {
             return format!("http://{}", s);
         }
     }
-    "http://rustdesk.smianao.com:21114".to_owned()
+    "http://8.148.67.106:21114".to_owned()
 }
 
 pub fn get_audit_server(api: String, custom: String, typ: String) -> String {
